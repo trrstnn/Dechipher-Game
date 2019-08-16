@@ -28,7 +28,7 @@
 }
 .header{
 font-family: Ailerons;
-font-size:10em;
+font-size:7em;
 
 }
 body {
@@ -189,6 +189,7 @@ button {
 .title {
   color: #FFF;
   font-family: Ailerons;
+  font-size:10em;
   
 }
 

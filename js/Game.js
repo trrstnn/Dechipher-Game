@@ -119,14 +119,16 @@ won
       console.log(this.activePhrase)
       console.log(currentButton);
   
-      button.disabled = true;
+      
       if(!this.activePhrase.checkLetter(currentButton)) {
           button.classList.add('wrong');
+          button.disabled = true;
           this.removeLife();
       } else {
           button.classList.add('chosen');
           this.activePhrase.showMatchedLetter(currentButton);
           this.checkForWin();
+          button.disabled = true;
       }
       
       if(this.checkForWin()) {
