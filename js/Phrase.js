@@ -10,7 +10,10 @@
          
      }
 
-
+/**
+* Checks if passed letter is in phrase
+* @param (string) letter - Letter to check
+**/
 checkLetter(letter){
     if(this.phrase.includes(letter)){
         return true
@@ -39,7 +42,10 @@ checkLetter(letter){
     }
 
 
-
+/**
+* Displays passed letter on screen after a match is found
+* @param (string) letter - Letter to display
+*/
     showMatchedLetter(letter) {
         if(this.checkLetter(letter)){
             const matchedLetter = document.getElementsByClassName(`${letter}`);

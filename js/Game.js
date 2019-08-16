@@ -34,6 +34,11 @@
        
 
         
+/**
+* Checks for winning move
+* @return {boolean} True if game has been won, false if game wasn't
+won
+*/
 
        checkForWin(){
         let allLetters = document.getElementsByClassName('letter');
@@ -46,7 +51,11 @@
        }
        
     
-     
+ /**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player is out
+*/
       removeLife() {
       let life = document.getElementsByTagName('img');
       life[this.missed].setAttribute('src', 'images/lostHeart.png');
@@ -55,6 +64,11 @@
           this.gameOver();
         }
       }
+
+/**
+* Displays game over message
+* @param {boolean} gameWon - Whether or not the user won the game
+*/
 
       gameOver(gameWon) {
         const startScreen = document.getElementById('overlay');
@@ -71,6 +85,7 @@
             endOverlay.classList.replace('start', 'lose');
           }
         }
+//Resets the game by resetting all elements to default settings
       newGame(){
       const phrases = document.getElementById('phrases');
       const chosen = document.querySelectorAll(".chosen");
@@ -94,6 +109,10 @@
 
       
      
+/**
+* Handles onscreen keyboard button clicks
+* @param (HTMLButtonElement) button - The clicked button element
+*/
 
       handleInteraction(button) {
       let currentButton  = button.textContent;
