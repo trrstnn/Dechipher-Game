@@ -2,7 +2,11 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
 
 /* Variables */
-
+@font-face {
+    font-family: 'Ailerons';
+    src: url("./Ailerons-Typeface.otf");
+    font-weight: bold;
+}
 :root {
   --color-win: #78CF82;
   --color-lose: #D94545;
@@ -22,7 +26,11 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+.header{
+font-family: Ailerons;
+font-size:10em;
 
+}
 body {
   justify-content: space-evenly;
   flex-direction: column;
@@ -72,6 +80,9 @@ button {
   height: 100%;
   max-height: 900px;
   text-align: center;
+  background-image:url(https://media.giphy.com/media/xT9IgN8YKRhByRBzMI/giphy.gif);
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
 .section {
@@ -177,10 +188,14 @@ button {
 
 .title {
   color: #FFF;
+  font-family: Ailerons;
+  
 }
 
 .start {
-  background-color: #3a3f58;
+  background-image:url(https://media.giphy.com/media/l2JBygxaUuh8aJ6YHn/giphy.gif);
+  background-repeat:no-repeat;
+  background-size:cover;
 }
 
 .start a {
@@ -202,3 +217,4 @@ button {
 .lose a {
   color: var(--color-lose);
 }
+

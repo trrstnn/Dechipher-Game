@@ -77,11 +77,11 @@ won
         const endMessage = document.getElementById('game-over-message');
           if (gameWon) {
             this.newGame();
-            endMessage.textContent = 'Good Work, You Won!';
+            endMessage.textContent = 'Good Work, The message was deciphered!';
             endOverlay.classList.replace('start', 'win');
           } else {
             this.newGame();
-            endMessage.textContent = 'You Lost... Beter Luck Next Time!';
+            endMessage.textContent = 'You have failed to decipher the message... Beter Luck Next Time!';
             endOverlay.classList.replace('start', 'lose');
           }
         }

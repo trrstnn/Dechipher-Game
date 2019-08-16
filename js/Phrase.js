@@ -21,6 +21,9 @@ checkLetter(letter){
         return false
     }
 }
+/**
+* Display phrase on game board
+*/
 
      addPhraseToDisplay(){
         const ul = document.getElementById('phrase');
