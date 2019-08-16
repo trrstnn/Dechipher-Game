@@ -2,11 +2,22 @@
  * Project 4 - OOP Game App
  * Phrase.js */
 
+
+
  class Phrase {
      constructor(phrase){
          this.phrase = phrase.toLowerCase();
          
      }
+
+
+checkLetter(letter){
+    if(this.phrase.includes(letter)){
+        return true
+    }else{
+        return false
+    }
+}
 
      addPhraseToDisplay(){
         const ul = document.getElementById('phrase');
@@ -27,18 +38,15 @@
         });
     }
 
-    checkLetter(letter){
-        if(this.phrase.includes(letter)){
-            return true
-        }else{
-            return false
-        }
-    }
+
 
     showMatchedLetter(letter) {
         if(this.checkLetter(letter)){
             const matchedLetter = document.getElementsByClassName(`${letter}`);
-            matchedLetter.forEach(letter => letter.classList.add('show'))
+            for (let i = 0; i < matchedLetter.length; i+=1) {
+                matchedLetter[i].classList.add('show');
+                
+            }
             
         }
     }
