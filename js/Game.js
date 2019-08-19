@@ -4,7 +4,7 @@
 
  class Game {
      constructor(){
-         this.missed=0;
+         this.missed = 0;
          this.phrases = [
           new Phrase("Kill Two Birds With One Stone"),
           new Phrase("An Arm and a Leg"),
@@ -24,12 +24,22 @@
     * Begins game by selecting a random phrase and displaying it to user
     */
        startGame(){
+          
+          const letters = document.getElementsByClassName('key');
+          console.log(letters);
           const overlay = document.getElementById('overlay');
           overlay.style.display = 'none';
           const randomPhrase = this.getRandomPhrase()
           this.activePhrase = randomPhrase;
           this.activePhrase.addPhraseToDisplay()
-          console.log(this.activePhrase.phrase)   
+          console.log(this.activePhrase.phrase)
+          
+          for(let i=0; i < letters.length; i++){
+            letters[i].disabled = false;
+          }
+          
+          
+
        }
        
 
@@ -58,8 +68,9 @@ won
 */
       removeLife() {
       let life = document.getElementsByTagName('img');
-      life[this.missed].setAttribute('src', 'images/lostHeart.png');
+      life[this.missed].src="images/lostHeart.png";
       this.missed += 1;
+      
         if (this.missed === 5) {
           this.gameOver();
         }
@@ -87,11 +98,12 @@ won
         }
 //Resets the game by resetting all elements to default settings
       newGame(){
-      const phrases = document.getElementById('phrases');
+      const phrases = document.getElementById('phrase');
       const chosen = document.querySelectorAll(".chosen");
       const wrong = document.querySelectorAll(".wrong");
       const lives = document.querySelectorAll(".tries");
-       
+      this.missed = 0;
+        console.log(phrases.children);
         while (phrases.firstChild) {
           phrases.removeChild(phrases.firstChild);
         }
@@ -104,7 +116,7 @@ won
         for (let i = 0; i < lives.length; i++) {
             lives[i].firstChild.src = 'images/liveHeart.png';
         }
-        console.log(phrases);
+        
       }
 
       
