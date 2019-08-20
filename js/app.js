@@ -7,13 +7,16 @@
 let game;
 
 const startButton = document.getElementById('btn__reset');
-startButton.addEventListener('click', game => {game = new Game(); game.startGame();
-const keyboard = document.getElementById('qwerty');
-keyboard.addEventListener('click',event =>{ 
+startButton.addEventListener('click',function(){
+    console.log('app start')
+    game = new Game(); 
+    game.startGame();
+});
+const screenKeyboard = document.getElementById('qwerty');
+screenKeyboard.addEventListener('click',event =>{ 
     if(event.target.className === 'key'){
         game.handleInteraction(event.target);
     }
-});
 });
 
 

@@ -24,9 +24,9 @@
     * Begins game by selecting a random phrase and displaying it to user
     */
        startGame(){
-          
+
+          console.log("startgame")
           const letters = document.getElementsByClassName('key');
-          console.log(letters);
           const overlay = document.getElementById('overlay');
           overlay.style.display = 'none';
           const randomPhrase = this.getRandomPhrase()
@@ -40,7 +40,7 @@
           
           
 
-       }
+       };
        
 
         
@@ -53,57 +53,53 @@ won
        checkForWin(){
         let allLetters = document.getElementsByClassName('letter');
         let matchedLetters = document.getElementsByClassName('show');
-          if(matchedLetters.length == allLetters.length){
+          if(matchedLetters.length === allLetters.length){
+            console.log('we have a winner')
             return true
           }else{
+            console.log("Loserrrr")
             return false
+            
           }
-       }
+       };
        
     
- /**
-* Increases the value of the missed property
-* Removes a life from the scoreboard
-* Checks if player has remaining lives and ends game if player is out
-*/
-      removeLife() {
-      let life = document.getElementsByTagName('img');
-      life[this.missed].src="images/lostHeart.png";
-      this.missed += 1;
-      
-        if (this.missed === 5) {
-          this.gameOver();
-        }
-      }
+ 
 
 /**
 * Displays game over message
 * @param {boolean} gameWon - Whether or not the user won the game
 */
-
       gameOver(gameWon) {
         const startScreen = document.getElementById('overlay');
         startScreen.style.display = 'block';
         const endOverlay = document.getElementById('overlay');
         const endMessage = document.getElementById('game-over-message');
           if (gameWon) {
-            this.newGame();
+            console.log("you won!")
             endMessage.textContent = 'Good Work, The message was deciphered!';
             endOverlay.classList.replace('start', 'win');
-          } else {
             this.newGame();
+            
+          } else  {
+            console.log("you lost!")
             endMessage.textContent = 'You have failed to decipher the message... Beter Luck Next Time!';
             endOverlay.classList.replace('start', 'lose');
-          }
-        }
+            this.newGame();
+            
+            }
+      };
+              
 //Resets the game by resetting all elements to default settings
       newGame(){
       const phrases = document.getElementById('phrase');
       const chosen = document.querySelectorAll(".chosen");
       const wrong = document.querySelectorAll(".wrong");
       const lives = document.querySelectorAll(".tries");
-      this.missed = 0;
-        console.log(phrases.children);
+      
+       console.log("new game has started")
+  
+        
         while (phrases.firstChild) {
           phrases.removeChild(phrases.firstChild);
         }
@@ -116,12 +112,27 @@ won
         for (let i = 0; i < lives.length; i++) {
             lives[i].firstChild.src = 'images/liveHeart.png';
         }
-        this.activePhrase = this.getRandomPhrase();         
+         
         
-      }
+      };
 
       
-     
+/**
+* Increases the value of the missed property
+* Removes a life from the scoreboard
+* Checks if player has remaining lives and ends game if player is out
+*/
+      removeLife() {
+      let life = document.getElementsByTagName('img');
+      life[this.missed].src="images/lostHeart.png";
+      this.missed += 1;
+      
+        if (this.missed === 5) {
+          this.gameOver(false);
+          console.log('removed all life')
+          
+        }
+      };  
 /**
 * Handles onscreen keyboard button clicks
 * @param (HTMLButtonElement) button - The clicked button element
@@ -130,7 +141,7 @@ won
       handleInteraction(button) {
       let currentButton  = button.textContent;
       console.log(this.activePhrase)
-      console.log(currentButton);
+      
   
       
       if(!this.activePhrase.checkLetter(currentButton)) {
@@ -146,7 +157,8 @@ won
       
       if(this.checkForWin()) {
           this.gameOver(true);
+          
       }
-      console.log(button)
-      }
-}
+      // console.log(button)
+      };
+};
