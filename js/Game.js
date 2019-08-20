@@ -116,6 +116,7 @@ won
         for (let i = 0; i < lives.length; i++) {
             lives[i].firstChild.src = 'images/liveHeart.png';
         }
+        this.activePhrase = this.getRandomPhrase();         
         
       }
 
