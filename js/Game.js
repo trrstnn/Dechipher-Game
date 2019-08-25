@@ -25,20 +25,33 @@
     */
        startGame(){
 
-          console.log("startgame")
-          const letters = document.getElementsByClassName('key');
-          const overlay = document.getElementById('overlay');
-          overlay.style.display = 'none';
-          const randomPhrase = this.getRandomPhrase()
-          this.activePhrase = randomPhrase;
-          this.activePhrase.addPhraseToDisplay()
-          console.log(this.activePhrase.phrase)
-          
-          for(let i=0; i < letters.length; i++){
+        const phrase = document.getElementById('phrase'); 
+        const startOverlay = document.getElementById('overlay');
+        const lives = document.querySelectorAll('img');
+        const letters = document.getElementsByClassName('key');
+        
+
+        while (phrase.firstChild) {
+            phrase.removeChild(phrase.firstChild);
+        }
+        for (let i = 0; i < letters.length; i++) {
+            
             letters[i].disabled = false;
-          }
-          
-          
+            letters[i].classList.add('key');
+            letters[i].classList.remove('chosen', 'wrong');
+            
+        };
+
+        for (let i = 0; i < lives.length; i++) {
+            lives[i].src=`images/liveHeart.png`;
+                
+        }
+            
+        startOverlay.style.display = 'none';
+        startOverlay.classList.remove('lose', 'win')
+        this.activePhrase = this.getRandomPhrase();         
+        this.activePhrase.addPhraseToDisplay();
+        
 
        };
        
@@ -57,7 +70,7 @@ won
             console.log('we have a winner')
             return true
           }else{
-            console.log("Loserrrr")
+            console.log("wrong")
             return false
             
           }
@@ -73,48 +86,24 @@ won
       gameOver(gameWon) {
         const startScreen = document.getElementById('overlay');
         startScreen.style.display = 'block';
-        const endOverlay = document.getElementById('overlay');
         const endMessage = document.getElementById('game-over-message');
           if (gameWon) {
             console.log("you won!")
             endMessage.textContent = 'Good Work, The message was deciphered!';
-            endOverlay.classList.replace('start', 'win');
-            this.newGame();
+            startScreen.classList.remove('start');
+            startScreen.classList.add('win');
+           
             
           } else  {
             console.log("you lost!")
             endMessage.textContent = 'You have failed to decipher the message... Beter Luck Next Time!';
-            endOverlay.classList.replace('start', 'lose');
-            this.newGame();
+            startScreen.classList.remove('start');
+            startScreen.classList.add('lose');
+            
             
             }
       };
               
-//Resets the game by resetting all elements to default settings
-      newGame(){
-      const phrases = document.getElementById('phrase');
-      const chosen = document.querySelectorAll(".chosen");
-      const wrong = document.querySelectorAll(".wrong");
-      const lives = document.querySelectorAll(".tries");
-      
-       console.log("new game has started")
-  
-        
-        while (phrases.firstChild) {
-          phrases.removeChild(phrases.firstChild);
-        }
-        for (let i = 0; i < chosen.length; i++) {
-            chosen[i].className = 'key';
-        }
-        for (let i = 0; i < wrong.length; i++) {
-        wrong[i].className = 'key';
-        }
-        for (let i = 0; i < lives.length; i++) {
-            lives[i].firstChild.src = 'images/liveHeart.png';
-        }
-         
-        
-      };
 
       
 /**
