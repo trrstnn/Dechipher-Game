@@ -30,7 +30,6 @@
         const lives = document.querySelectorAll('img');
         const letters = document.getElementsByClassName('key');
         
-
         while (phrase.firstChild) {
             phrase.removeChild(phrase.firstChild);
         }
@@ -96,7 +95,7 @@ won
             
           } else  {
             console.log("you lost!")
-            endMessage.textContent = 'You have failed to decipher the message... Beter Luck Next Time!';
+            endMessage.textContent = 'You have failed to decipher the message... Better Luck Next Time!';
             startScreen.classList.remove('start');
             startScreen.classList.add('lose');
             
